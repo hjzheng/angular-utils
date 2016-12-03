@@ -4,10 +4,12 @@ module.exports = function (config) {
 	config.set({
 		frameworks: ['jasmine-ajax', 'jasmine'],
 		files: [
-			'./test/test.index.js'
+			'./test/spec.index.js',
+			'./test/src.index.js'
 		],
 		preprocessors: {
-			'./test/test.index.js': ['webpack', 'coverage']
+			'./test/spec.index.js': ['webpack'],
+			'./test/src.index.js': ['webpack', 'coverage']
 		},
 		webpack: {
 			devtool: 'eval',
@@ -44,6 +46,7 @@ module.exports = function (config) {
 		},
 
 		browsers: ['PhantomJS'],
+		// browsers: ['Chrome'],
 		browserify: {
 			debug: true,
 			bundleDelay: 2000 // Fixes "reload" error messages, YMMV!
