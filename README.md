@@ -1,5 +1,8 @@
 # angular-utils
 
+[![npm version](https://img.shields.io/npm/v/angular-utils.svg?style=flat-square)](https://www.npmjs.com/package/angular-utils)
+[![npm downloads](https://img.shields.io/npm/dt/angular-utils.svg?style=flat-square)](https://www.npmjs.com/package/angular-utils)
+
 ### 使用 装饰器
 
 - @Router
