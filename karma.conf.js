@@ -4,12 +4,10 @@ module.exports = function (config) {
 	config.set({
 		frameworks: ['jasmine-ajax', 'jasmine'],
 		files: [
-			'./test/spec.index.js',
-			'./test/src.index.js'
+			'./test/spec.index.js'
 		],
 		preprocessors: {
-			'./test/spec.index.js': ['webpack'],
-			'./test/src.index.js': ['webpack', 'coverage']
+			'./test/spec.index.js': ['webpack', 'coverage']
 		},
 		webpack: {
 			devtool: 'eval',
