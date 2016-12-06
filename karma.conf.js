@@ -4,10 +4,10 @@ module.exports = function (config) {
 	config.set({
 		frameworks: ['jasmine-ajax', 'jasmine'],
 		files: [
-			'./test/spec.index.js'
+			'./test/test.index.js'
 		],
 		preprocessors: {
-			'./test/spec.index.js': ['webpack', 'coverage']
+			'./test/test.index.js': ['webpack']
 		},
 		webpack: {
 			devtool: 'eval',
@@ -36,7 +36,7 @@ module.exports = function (config) {
 				postLoaders: [{
 					test: /\.js$/,
 					loader: 'istanbul-instrumenter',
-					exclude: /node_modules/,
+					exclude: /node_modules|_spec\.js$/,
 					include: [path.join(__dirname, './src')]
 				}]
 			}
@@ -49,10 +49,6 @@ module.exports = function (config) {
 
 		browsers: ['PhantomJS'],
 		// browsers: ['Chrome'],
-		browserify: {
-			debug: true,
-			bundleDelay: 2000 // Fixes "reload" error messages, YMMV!
-		},
 		reporters: ['progress', 'coverage'],
 		// optionally, configure the reporter
 		coverageReporter: {
