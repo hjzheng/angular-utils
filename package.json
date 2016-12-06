@@ -1,7 +1,7 @@
 {
   "name": "angular-utils",
-  "version": "0.0.5",
-  "description": "",
+  "version": "0.0.6",
+  "description": "just angular1.x es6 utils",
   "main": "./index.js",
   "scripts": {
     "report-coverage": "codecov",
