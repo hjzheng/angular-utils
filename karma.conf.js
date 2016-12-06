@@ -29,14 +29,18 @@ module.exports = function (config) {
 					exclude: /node_modules/,
 					include: [path.join(__dirname, './src')]
 				}],
-				loaders: [
-					{
-						test: /\.js$/,
-						loaders: ['babel'],
-						exclude: /node_modules/,
-						include: [path.join(__dirname, './src'), path.join(__dirname, './test')]
-					}
-				]
+				loaders: [{
+					test: /\.js$/,
+					loaders: ['babel'],
+					exclude: /node_modules/,
+					include: [path.join(__dirname, './src'), path.join(__dirname, './test')]
+				}],
+				postLoaders: [{
+					test: /\.js$/,
+					loader: 'istanbul-instrumenter',
+					exclude: /node_modules/,
+					include: [path.join(__dirname, './src')]
+				}]
 			}
 
 		},
