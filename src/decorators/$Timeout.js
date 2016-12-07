@@ -12,7 +12,7 @@ export const $Timeout = (delay = 0, invokeApply = true) => (target, key, descrip
 	return {
 		...descriptor,
 		value(...args) {
-			$timeout(() => {
+			return $timeout(() => {
 				fn.apply(this, args);
 			}, delay, invokeApply);
 		}

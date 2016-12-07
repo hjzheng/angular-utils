@@ -20,12 +20,33 @@ describe('@Inject', () => {
 		$rootScope = null;
 	});
 
-	// 由于不支持 PhantomJS 不支持 Proxy 对象, 测试无法进行
+	// 由于不支持 PhantomJS 不支持 Proxy 对象, 测试无法进行, chrome 测试 OK
 	xit('注入服务', () => {
 
 		@$Inject('$rootScope', '$q')
 		class AppCtrl {
 			constructor() {
+			}
+		}
+
+		let appCtrl = $controller(AppCtrl, {'$rootScope': $rootScope, '$q': $q});
+		expect(appCtrl._$rootScope).toEqual($rootScope);
+		expect(appCtrl._$q).toEqual($q);
+	});
+
+	// 由于不支持 PhantomJS 不支持 Proxy 对象, 测试无法进行, chrome 测试 OK
+	xit('继承注入的服务', () => {
+
+		@$Inject('$rootScope')
+		class SuperCtrl {
+			constructor() {
+			}
+		}
+
+		@$Inject('$q')
+		class AppCtrl extends SuperCtrl {
+			constructor() {
+				super();
 			}
 		}
 
