@@ -5,8 +5,8 @@
  * */
 import injector from 'angular-es-utils/injector';
 
-export const InjectServices = (...dependencies) => (target) => {
-	dependencies.forEach((dependency) => {
+export const InjectServices = (...dependencies) => target => {
+	dependencies.forEach(dependency => {
 		target.prototype[`_${dependency}`] = injector.get(dependency);
 	});
 };
