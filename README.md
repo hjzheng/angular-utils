@@ -14,6 +14,7 @@
 
 ```js
 import { Router } from 'angular-utils/decorators';
+import { decoratedModule } from 'angular-utils/utils';
 
 @Router('example', {
     url: '/example',
@@ -117,3 +118,33 @@ export default class PartialPage {
 	}
 }
 ```
+
+## 使用 utils
+
+- InterceptorFactory
+
+由于 $resource 的 interceptor 配置, 不支持数组方式, 配置多拦截器.
+InterceptorFactory 可以实现多拦截器的效果, 例子请参考: InterceptorFactory_spec.js
+
+- spread
+
+为 Promise 提供 spread 方法
+
+```js
+spread();
+Promise.resolve([1, 2, 3]).spread((a, b, c) => {
+	expect(a).toBe(1);
+	expect(b).toBe(2);
+	expect(c).toBe(3);
+});
+```
+
+当然你也可以扩展 $q 中的 Promise
+
+```js
+spread(Object.getPrototypeOf($q.defer().promise).constructor);
+```
+
+- decoratedModule
+
+包装 angular 模块方法, 不对外提供 filter/service, 原因见[No Service/Filter](https://github.com/ShuyunFF2E/ccms-angular-styleguide#no-servicefilter-)
