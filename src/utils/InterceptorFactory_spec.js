@@ -11,7 +11,7 @@ describe('InterceptorFactory', () => {
 		factory = new InterceptorFactory();
 		filter1 = function (response) {
 			num++;
-			return response;
+			return response.data;
 		};
 		filter2 = function (response) {
 			num++;

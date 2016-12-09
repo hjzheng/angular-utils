@@ -11,7 +11,7 @@ export default class InterceptorFactory {
 
 	getInterceptor() {
 		return {
-			'response': response => this.filters.reduce((value, fn) => fn(value), response).data
+			'response': response => this.filters.reduce((value, fn) => fn(value), response)
 		};
 	}
 }
