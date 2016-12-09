@@ -139,7 +139,7 @@ Promise.resolve([1, 2, 3]).spread((a, b, c) => {
 });
 ```
 
-当然你也可以扩展 $q 中的 Promise
+当然你也可以扩展 $q 中的 Promise (可以在 run 阶段执行方法)
 
 ```js
 spread(Object.getPrototypeOf($q.defer().promise).constructor);
