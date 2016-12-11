@@ -11,7 +11,7 @@ function getOwnPropertyDescriptors(obj) {
 }
 
 
-export const Mixin = (...mixins) => target => {
+export const Mixin = (...mixins: Object) => target => {
 
 	if (!mixins.length) {
 		throw new SyntaxError(`@mixin() class ${target.name} 至少需要一个参数.`);

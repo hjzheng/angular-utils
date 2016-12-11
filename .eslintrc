@@ -12,7 +12,8 @@
   },
 
   "plugins": [
-    "standard"
+    "standard",
+    "flowtype"
   ],
 
   "globals": {
@@ -29,7 +30,7 @@
     //箭头函数中的箭头前后需要留空格
     "arrow-spacing": [2, { "before": true, "after": true }],
     // 箭头函数中，在需要的时候，在参数外使用小括号（只有一个参数时，可以不适用括号，其它情况下都需要使用括号）
-    "arrow-parens": [2, "as-needed"],
+    "arrow-parens": [0, "as-needed"],
     //如果代码块是单行的时候，代码块内部前后需要留一个空格
     "block-spacing": [2, "always"],
     //大括号语法采用『1tbs』,允许单行样式

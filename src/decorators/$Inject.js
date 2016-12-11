@@ -1,6 +1,6 @@
 const toString = Object.prototype.toString;
 
-export const $Inject = (...dependencies) => originTarget => {
+export const $Inject = (...dependencies: string[] | Array<string>) => originTarget => {
 
 	// 获取当前 class 的父类
 	const parentClass = Object.getPrototypeOf(originTarget);

@@ -5,9 +5,9 @@
 
 let map = {};
 
-const get = key => map[key];
+const get = (key: string) => map[key];
 
-const set = (key, value) => {
+const set = (key: string, value: any) => {
 	map[key] = value;
 };
 

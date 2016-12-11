@@ -2,7 +2,7 @@ import angular from 'angular';
 import map from './map';
 
 class DecoratedModule {
-	constructor(name, modules = false) {
+	constructor(name: string, modules: ?Array) {
 		this.routers = map.get('uiRoutersConf') || {};
 		this.name = name;
 		if (modules) {
@@ -12,7 +12,7 @@ class DecoratedModule {
 		}
 	}
 
-	router(className) {
+	router(className: string) {
 		const routers = this.routers;
 		configRouter.$inject = ['$stateProvider'];
 		function configRouter($stateProvider) {

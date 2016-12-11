@@ -18,6 +18,6 @@ function deepTraverse(json, target, value = false) {
 	}
 }
 
-export default function traverse(json, target, value) {
+export default function traverse(json: Object | Array, target: number | string, value: any): void {
 	deepTraverse(json, target, value);
 }
