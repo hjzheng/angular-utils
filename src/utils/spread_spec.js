@@ -17,7 +17,7 @@ describe('spread', () => {
 	});
 
 	// PhantomJS 不支持 Promise 对象, Chrome 下测试 OK
-	xit('扩展原生的 promise 对象', () => {
+	it('扩展原生的 promise 对象', () => {
 		spread();
 		expect(Promise.prototype.spread).toBeDefined();
 		Promise.resolve([1, 2, 3]).spread((a, b, c) => {
@@ -28,7 +28,7 @@ describe('spread', () => {
 	});
 
 	// PhantomJS 不支持 Promise 对象, Chrome 下测试 OK
-	xit('扩展 $q 中的 promise 对象', () => {
+	it('扩展 $q 中的 promise 对象', () => {
 		spread(Object.getPrototypeOf($q.defer().promise).constructor);
 
 		function testQ() {

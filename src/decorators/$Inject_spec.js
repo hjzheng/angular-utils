@@ -21,7 +21,7 @@ describe('@Inject', () => {
 	});
 
 	// 由于不支持 PhantomJS 不支持 Proxy 对象, 测试无法进行, chrome 测试 OK
-	xit('注入服务', () => {
+	it('注入服务', () => {
 
 		@$Inject('$rootScope', '$q')
 		class AppCtrl {
@@ -35,7 +35,7 @@ describe('@Inject', () => {
 	});
 
 	// 由于不支持 PhantomJS 不支持 Proxy 对象, 测试无法进行, chrome 测试 OK
-	xit('继承注入的服务', () => {
+	it('继承注入的服务', () => {
 
 		@$Inject('$rootScope')
 		class SuperCtrl {
