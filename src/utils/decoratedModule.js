@@ -12,7 +12,7 @@ class DecoratedModule {
 		}
 	}
 
-	router(className: string) {
+	router(className: ?string) {
 		const routers = this.routers;
 		configRouter.$inject = ['$stateProvider'];
 		function configRouter($stateProvider) {
