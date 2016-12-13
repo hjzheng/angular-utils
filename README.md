@@ -10,11 +10,12 @@
 
 - @Router
 
-@Router 只记录路由配置, 并未进行路由配置. 因此使用 decoratedModule 中的 routerAll 方法配置路由
+@Router 只记录路由配置(注意这里指的是 UI-Router), 并未进行路由配置. 因此使用 decoratedModule 中的 routerAll 方法配置路由
 
 ```js
 import { Router } from 'angular-utils/decorators';
 import { decoratedModule } from 'angular-utils/utils';
+import ExampleTplUrl from './example.tpl.html';
 
 @Router('example', {
     url: '/example',
@@ -40,6 +41,43 @@ export default decoratedModule('App', [])
 .controller(`AppCtrl`, AppCtrl)
 .name;
 
+```
+
+注意: 关于 UI-Router 多命名视图配置
+
+```js
+	class TicketList {
+	}
+
+	class TicketDetail {
+	}
+
+	let routerConf = {
+		url: '/ticket',
+		views: {
+			'': {
+				templateUrl: './src/app/ticket/ticket.html',
+				controller: 'TicketController',
+				controllerAs: 'vm'
+			},
+			'list@ticket': {
+				templateUrl: './src/app/ticket/list/list.html',
+				controller: TicketList,
+				controllerAs: 'vm'
+			},
+			'detail@ticket': {
+				templateUrl: './src/app/ticket/detail/detail.html',
+				controller: TicketDetail,
+				controllerAs: 'vm'
+			}
+		}
+	};
+
+	@Router('ticket', routerConf)
+	class TicketController {
+		constructor() {
+		}
+	}
 ```
 
 - @$Timeout
@@ -70,6 +108,8 @@ class AppCtrl {
 
 - @$Inject
 
+依赖注入
+
 ```js
 import { $Inject } from 'angular-utils/utils';
 
@@ -78,8 +118,34 @@ class AppCtrl {
 	constructor() {
 		// 使用注入对象
 		this._$q;
+		this._$scope;
 	}
 }
+```
+
+依赖注入与继承
+
+```js
+@$Inject('$rootScope')
+class SuperCtrl {
+	constructor() {
+	}
+}
+
+@$Inject('$q')
+class AppCtrl extends SuperCtrl {
+	constructor() {
+		super();
+	}
+	
+	test() {
+		// 使用注入对象
+		this._$q;
+		this._$rootScope;
+	}
+}
+
+
 ```
 
 - @Mixin
@@ -126,11 +192,17 @@ export default class PartialPage {
 由于 $resource 的 interceptor 配置, 不支持数组方式, 配置多拦截器.
 InterceptorFactory 可以实现多拦截器的效果, 例子请参考: InterceptorFactory_spec.js
 
+```js
+import { InterceptorFactory } from 'angular-utils/utils';
+```
+
 - spread
 
 为 Promise 提供 spread 方法
 
 ```js
+import { spread } from 'angular-utils/utils';
+
 spread();
 Promise.resolve([1, 2, 3]).spread((a, b, c) => {
 	expect(a).toBe(1);
@@ -148,3 +220,7 @@ spread(Object.getPrototypeOf($q.defer().promise).constructor);
 - decoratedModule
 
 包装 angular 模块方法, 不对外提供 filter/service, 原因见[No Service/Filter](https://github.com/ShuyunFF2E/ccms-angular-styleguide#no-servicefilter-)
+
+```js
+import { decoratedModule } from 'angular-utils/utils';
+```
