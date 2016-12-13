@@ -46,38 +46,38 @@ export default decoratedModule('App', [])
 注意: 关于 UI-Router 多命名视图配置
 
 ```js
-	class TicketList {
-	}
+class TicketList {
+}
 
-	class TicketDetail {
-	}
+class TicketDetail {
+}
 
-	let routerConf = {
-		url: '/ticket',
-		views: {
-			'': {
-				templateUrl: './src/app/ticket/ticket.html',
-				controller: 'TicketController',
-				controllerAs: 'vm'
-			},
-			'list@ticket': {
-				templateUrl: './src/app/ticket/list/list.html',
-				controller: TicketList,
-				controllerAs: 'vm'
-			},
-			'detail@ticket': {
-				templateUrl: './src/app/ticket/detail/detail.html',
-				controller: TicketDetail,
-				controllerAs: 'vm'
-			}
-		}
-	};
-
-	@Router('ticket', routerConf)
-	class TicketController {
-		constructor() {
+let routerConf = {
+	url: '/ticket',
+	views: {
+		'': {
+			templateUrl: './src/app/ticket/ticket.html',
+			controller: 'TicketController',
+			controllerAs: 'vm'
+		},
+		'list@ticket': {
+			templateUrl: './src/app/ticket/list/list.html',
+			controller: TicketList,
+			controllerAs: 'vm'
+		},
+		'detail@ticket': {
+			templateUrl: './src/app/ticket/detail/detail.html',
+			controller: TicketDetail,
+			controllerAs: 'vm'
 		}
 	}
+};
+
+@Router('ticket', routerConf)
+class TicketController {
+	constructor() {
+	}
+}
 ```
 
 - @$Timeout
