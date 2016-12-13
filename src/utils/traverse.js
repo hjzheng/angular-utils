@@ -5,7 +5,7 @@ function deepTraverse(json, target, value = false) {
 		for (const key in json) {
 			if (json.hasOwnProperty(key) === true) {
 				if (key === target) {
-					value ? json[key] = value : value = json[key];
+					angular.isFunction(json[key]) ? angular.noop() : json[key] = value;
 				}
 				deepTraverse(json[key], target, value);
 			}
