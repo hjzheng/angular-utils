@@ -49,7 +49,9 @@ let events = {};
 export default {
 	events,
 	addEvent(name: string) {
-		events[name] = new Event(name);
+		if (!events[name]) {
+			events[name] = new Event(name);
+		}
 	},
 	clear(name: ?string) {
 		if (typeof fn === 'string') {

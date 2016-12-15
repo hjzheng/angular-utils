@@ -6,7 +6,9 @@
 [![coverage](https://img.shields.io/codecov/c/github/hjzheng/angular-utils.svg?style=flat-square)](https://codecov.io/gh/hjzheng/angular-utils)
 
 
-### 使用 装饰器
+### 使用 装饰器 
+
+关于[AngularJS与装饰器](https://github.com/ShuyunXIANFESchool/FE-problem-collection/issues/36)
 
 - @Router
 
@@ -223,4 +225,52 @@ spread(Object.getPrototypeOf($q.defer().promise).constructor);
 
 ```js
 import { decoratedModule } from 'angular-utils/utils';
+```
+
+- EventBus 
+
+用于取代 angular 原生的 $on $broadcast $emit 原因见[ng中的事件订阅与发布](https://github.com/ShuyunXIANFESchool/FE-problem-collection/issues/20)
+
+```js
+import { EventBus } from 'angular-utils/utils';
+
+// 添加事件
+EventBus.addEvent('customEvent');
+EventBus.addEvent('customEvent2');
+
+// 订阅事件
+let listener = function () {
+	// do something that you like
+};
+
+EventBus.events.customEvent.sub(listener);
+
+EventBus.events.customEvent.sub((obj) => {
+	expect(obj.test).toBe('test');
+});
+
+// 发布事件
+EventBus.events.customEvent.pub({test: 'test'});
+
+// 禁用事件
+EventBus.events.customEvent.disable = true;
+
+// 事件禁用后, 无法触发该类事件
+EventBus.events.customEvent.pub({test: 'test'});
+
+// 启用事件
+EventBus.events.customEvent.disable = false;
+
+// 删除注册的 listener 函数
+EventBus.events.customEvent.clear(listener);
+
+// 删除所有 customEvent 事件的监听函数
+EventBus.events.customEvent.clear();
+
+// 删除事件
+EventBus.clear('customEvent');
+
+// 删除所有添加的事件
+EventBus.clear();
+
 ```
