@@ -14,6 +14,10 @@
 
 @Router 只记录路由配置(注意这里指的是 UI-Router), 并未进行路由配置. 因此使用 decoratedModule 中的 routerAll 方法配置路由
 
+> 注意: 
+> 如果使用 Uglify 压缩代码, 请禁用 mangle `{ mangle: false }`
+> 如果使用 UglifyJS2 压缩代码, 请保持函数名称 `mangle: { keep_fnames: true }`
+
 ```js
 import { Router } from 'angular-utils/decorators';
 import { decoratedModule } from 'angular-utils/utils';
