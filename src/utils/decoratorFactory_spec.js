@@ -9,19 +9,12 @@ describe('decoratorFactory', () => {
 	let num = 0;
 
 	beforeEach(() => {
-		decorator1 = function (response) {
-			num++;
-			return response;
-		};
-		decorator2 = function (response) {
-			num++;
-			return response;
-		};
-		fn = function (response) {
-			return response;
-		};
+		decorator1 = response => { num++; return response; };
+		decorator2 = response => { num++; return response; };
+		fn = response => response;
+
 		obj = {
-			fn: function () {
+			fn() {
 				return this.value;
 			},
 			value: 10

@@ -9,14 +9,8 @@ describe('InterceptorFactory', () => {
 
 	beforeEach(() => {
 		factory = new InterceptorFactory();
-		filter1 = function (response) {
-			num++;
-			return response.data;
-		};
-		filter2 = function (response) {
-			num++;
-			return response;
-		};
+		filter1 = response => { num++; return response.data; };
+		filter2 = response => { num++; return response; };
 	});
 
 	afterEach(() => {
