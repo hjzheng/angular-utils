@@ -12,7 +12,7 @@
 
 - @Router
 
-@Router 只记录路由配置(注意这里指的是 UI-Router), 并未进行路由配置. 因此使用 decoratedModule 中的 routerAll 方法配置路由
+@Router 只记录路由配置(注意这里指的是 UI-Router ^0.2.18), 并未进行路由配置. 因此使用 decoratedModule 中的 routerAll 方法配置路由
 
 > 注意: 
 > 如果使用 Uglify 压缩代码, 请禁用 mangle `{ mangle: false }`
