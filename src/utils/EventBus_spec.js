@@ -159,4 +159,26 @@ describe('EventBus', () => {
 
 	});
 
+	it('在一个 Listener 中添加 Listener', () => {
+
+
+		let t = 0;
+
+		let listener = function () {
+			EventBus.events.test1.sub(() => {
+				t = 1;
+				EventBus.events.test1.sub(() => {
+					t = 2;
+				});
+			});
+		};
+
+		EventBus.events.test1.sub(listener);
+
+		EventBus.events.test1.pub();
+
+		expect(t).toBe(2);
+
+	});
+
 });
