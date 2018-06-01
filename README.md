@@ -89,7 +89,7 @@ class TicketController {
 - @$Timeout
 
 ```js
-import { $Timeout } from 'angular-utils/utils';
+import { $Timeout } from 'angular-utils/decorators';
 
 class AppCtrl {
 	@$Timeout(0, false)
@@ -102,7 +102,7 @@ class AppCtrl {
 - @$Apply
 
 ```js
-import { $Apply } from 'angular-utils/utils';
+import { $Apply } from 'angular-utils/decorators';
 
 class AppCtrl {
 	@$Apply()
@@ -117,7 +117,7 @@ class AppCtrl {
 依赖注入
 
 ```js
-import { $Inject } from 'angular-utils/utils';
+import { $Inject } from 'angular-utils/decorators';
 
 @$Inject('$q', '$scope')
 class AppCtrl {
