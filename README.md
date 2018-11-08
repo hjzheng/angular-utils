@@ -278,3 +278,147 @@ EventBus.clear('customEvent');
 EventBus.clear();
 
 ```
+
+## `@Component`和`@RouterX`的使用说明
+
+### @RouterX
+> 将angular注册路由的代码用装饰器统一执行
+
++ 下面有一段原生的路由配置：
+
+```javascript
+
+// index.js 文件中设置路由
+import angular from 'angular';
+import controller from './controller';
+import templateUrl from './template.html';
+
+routerConfig.$inject = ['$stateProvider'];
+function routerConfig($stateProvider) {
+	$stateProvider
+		.state('le.member.information', {
+			url: '/le/member',
+			templateUrl,
+			controller,
+			controllerAs: '$ctrl'
+		});
+	}
+
+export default angular.module('ccms.le.member', []) // 添加子模块
+			.config(routerConfig)
+			.name;
+
+```
+
++ 使用@RouterX的方式改造路由注册，直接在对应controller上添加装饰器
+
+@RouterX支持所有原生路由的参数配置，额外添加了stateName选项用于替代state，添加了modules用于设置子模块，添加了moduleName可以自定义路由注册时模块的名称
+
+```javascript
+import templateUrl from './templateUrl';
+import RouterX, {routerHub, setModulePrefix} from './decorators/Router';
+
+// 注册路由时，moduleName会默认使用prefix+stateName, 也可以使用moduleName选项自定义设置模块名称
+// setRouterPrefx('ccms');
+
+@RouterX({
+	stateName: 'le.member.information',
+	templateUrl,
+	url: '/le/member',
+	modules: []
+})
+export default class MemberInformation {
+
+}
+
+```
+
++ 还提供了routerHub和withRouter。routerHub提供类似vue-router的集中处理路由的方式。
+
+```javascript
+import { routerHub } from './decorators/RouterX'
+
+export default routerHub({
+	stateName: 'le.card',
+	url: '/card',
+	template: '<ui-view></ui-view>',
+	children: [{
+		stateName: 'le.card.create',
+		url: '/create/:planId',
+		controller: createCtrl,
+		templateUrl: createTpl
+	}, {
+		stateName: 'le.card.list',
+		url: '/list',
+		controller: listCtrl,
+		templateUrl: listTpl
+	}]
+});
+
+```
+
+
+### @Component
+
+> 与@RouterX的涉及的思路一致，均使用装饰器的方式整合注册过程。
+> @Component整合了组件注册的代码
+
++ 下面一段代码使用原生的方式注册组件
+```javascript
+
+// index.js
+import angular from 'angular';
+
+import templateUrl from '../base/template.html';
+import controller from './controller';
+
+const componentOpts = {
+  controller,
+  templateUrl,
+  bindings: {
+    vAlign: '@?', // 垂直对齐
+    hAlign: '@?', // 水平对齐
+    styleObj: '<?', // 自定义样式
+    className: '@', // 自定义类
+    gap: '<?' // 内间距
+  },
+  transclude: true
+};
+
+export default angular
+  .module('ccms.components.VGroup', [])
+  .component('vGroup', componentOpts)
+  .name;
+
+```
+
++ 对应的，使用@Component的方式注册组件
+
+```javascript
+
+import GroupBase from '../base/base-controller';
+import {Inject} from 'angular-es-utils';
+import Component from '../../../sdk/utils/easy-component';
+import templateUrl from '../base/template.html';
+
+@Component({
+  name: 'vGroup',
+	templateUrl: templateUrl,
+	bindings: {
+		vAlign: '@?', // 垂直对齐
+		hAlign: '@?', // 水平对齐
+		styleObj: '<?', // 自定义样式
+		className: '@', // 自定义类
+		gap: '<?' // 内间距
+	},
+ transclude: true
+})
+@Inject('$transclude', '$element', '$compile', '$scope')
+export default class VGroup extends GroupBase {
+	constructor(){
+		super();
+	}
+}
+```
+
+除了添加额外的name选项用于设置组件名称，支持原生注册组件的所有选项，组件名称使用驼峰形式，否则无法渲染。

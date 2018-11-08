@@ -5,11 +5,18 @@ import { Mixin } from './Mixin';
 import { Router } from './Router';
 import { InjectServices } from './InjectServices';
 
+import RouterX, { routerHub, setModulePrefix, getModulePrefix} from './RouterX';
+import Component from './Component';
+
 export {
 	$Inject,
 	$Timeout,
 	$Apply,
 	Mixin,
 	Router,
-	InjectServices
+	InjectServices,
+	
+	RouterX,
+	routerHub,
+	Component
 };
