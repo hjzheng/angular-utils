@@ -1,6 +1,6 @@
 {
   "name": "angular-utils",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "just angular1.x es6 utils",
   "main": "./index.js",
   "scripts": {
