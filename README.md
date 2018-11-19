@@ -279,9 +279,9 @@ EventBus.clear();
 
 ```
 
-## `@Component`和`@RouterX`的使用说明
+## `@Component`和`@Route`的使用说明
 
-### @RouterX
+### @Route
 > 将angular注册路由的代码用装饰器统一执行
 
 + 下面有一段原生的路由配置：
@@ -310,18 +310,18 @@ export default angular.module('ccms.le.member', []) // 添加子模块
 
 ```
 
-+ 使用@RouterX的方式改造路由注册，直接在对应controller上添加装饰器
++ 使用@Route的方式改造路由注册，直接在对应controller上添加装饰器
 
-@RouterX支持所有原生路由的参数配置，额外添加了stateName选项用于替代state，添加了modules用于设置子模块，添加了moduleName可以自定义路由注册时模块的名称
+@Route支持所有原生路由的参数配置，额外添加了stateName选项用于替代state，添加了modules用于设置子模块，添加了moduleName可以自定义路由注册时模块的名称
 
 ```javascript
 import templateUrl from './templateUrl';
-import RouterX, {routerHub, setModulePrefix} from './decorators/Router';
+import Route, {routerHub, setModulePrefix} from './decorators/Router';
 
 // 注册路由时，moduleName会默认使用prefix+stateName, 也可以使用moduleName选项自定义设置模块名称
 // setRouterPrefx('ccms');
 
-@RouterX({
+@Route({
 	stateName: 'le.member.information',
 	templateUrl,
 	url: '/le/member',
@@ -336,7 +336,7 @@ export default class MemberInformation {
 + 还提供了routerHub和withRouter。routerHub提供类似vue-router的集中处理路由的方式。
 
 ```javascript
-import { routerHub } from './decorators/RouterX'
+import { routerHub } from './decorators/Route'
 
 export default routerHub({
 	stateName: 'le.card',
@@ -360,7 +360,7 @@ export default routerHub({
 
 ### @Component
 
-> 与@RouterX的涉及的思路一致，均使用装饰器的方式整合注册过程。
+> 与@Route的涉及的思路一致，均使用装饰器的方式整合注册过程。
 > @Component整合了组件注册的代码
 
 + 下面一段代码使用原生的方式注册组件
