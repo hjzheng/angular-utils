@@ -18,7 +18,7 @@ let prefix = 'ccms';
  * @returns {Function}
  * @constructor
  */
-function RouterX(config) {
+function Route(config) {
 	return function(target) {
 		config.controller = target; // 强制改变路由配置中的controller为当前修饰的控制器
 		withRouter(config); // 设置路由
@@ -82,7 +82,7 @@ function getModulePrefix() {
 }
 
 
-export default RouterX;
+export default Route;
 export {
 	withRouter,
 	routerHub,

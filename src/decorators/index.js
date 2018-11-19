@@ -5,7 +5,7 @@ import { Mixin } from './Mixin';
 import { Router } from './Router';
 import { InjectServices } from './InjectServices';
 
-import RouterX, { routerHub, setModulePrefix, getModulePrefix} from './RouterX';
+import Route, { routerHub, setModulePrefix, getModulePrefix} from './Route';
 import Component from './Component';
 
 export {
@@ -16,7 +16,7 @@ export {
 	Router,
 	InjectServices,
 	
-	RouterX,
+	Route,
 	routerHub,
 	Component
 };
