@@ -112,6 +112,20 @@ class AppCtrl {
 }
 ```
 
+- @$Async
+
+```js
+import { $Async } from 'angular-utils/decorators';
+
+class AppCtrl {
+	@$Async()
+	async test() {
+		const result = await fetchSomeInfos();
+		this.info = result.info;
+	}
+}
+```
+
 - @$Inject
 
 依赖注入
