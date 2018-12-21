@@ -6,6 +6,16 @@
 [![coverage](https://img.shields.io/codecov/c/github/hjzheng/angular-utils.svg?style=flat-square)](https://codecov.io/gh/hjzheng/angular-utils)
 
 
+### 说明
+高于且包括 0.2 版本, 需要引入 module
+
+```js
+import ngUtils from 'angular-utils';
+angular.module('app', [ngUtils]);
+```
+
+低于 0.2 版本 直接使用
+
 ### 使用 装饰器 
 
 关于[AngularJS与装饰器](https://github.com/ShuyunXIANFESchool/FE-problem-collection/issues/36)

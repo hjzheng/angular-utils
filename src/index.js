@@ -1,2 +1,2 @@
-export * from './decorators';
-export * from './utils';
+import moduleName from './helper';
+export default moduleName;

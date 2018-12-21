@@ -1,5 +1,5 @@
-import injector from 'angular-es-utils/injector';
 import angular from 'angular';
+import injectHelper from '../helper/injectHelper';
 
 export const $Async = (target, key, descriptor) => {
 
@@ -13,7 +13,7 @@ export const $Async = (target, key, descriptor) => {
 		...descriptor,
 		value(...args) {
 			const result = fn.apply(this, args);
-			injector.invoke(['$rootScope', '$q', ($rootScope, $q) => {
+			injectHelper.injector.invoke(['$rootScope', '$q', ($rootScope, $q) => {
 				$q.when(result)
 					.then(() => $rootScope.$applyAsync());
 			}]);
