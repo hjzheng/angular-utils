@@ -6,6 +6,8 @@
 [![coverage](https://img.shields.io/codecov/c/github/hjzheng/angular-utils.svg?style=flat-square)](https://codecov.io/gh/hjzheng/angular-utils)
 
 
+> ### 注意：请使用 0.1.x 版本， 0.2.x 正在测试中
+
 ### 使用 装饰器 
 
 关于[AngularJS与装饰器](https://github.com/ShuyunXIANFESchool/FE-problem-collection/issues/36)
