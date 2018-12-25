@@ -1,6 +1,5 @@
 import angular from 'angular';
 import injectHelper from '../helper/injectHelper';
-const $rootScope = injectHelper.injector.get('$rootScope');
 
 export const $Apply = (target, key, descriptor) => {
 	const fn = descriptor.value;
@@ -12,6 +11,9 @@ export const $Apply = (target, key, descriptor) => {
 	return {
 		...descriptor,
 		value(...args) {
+
+			const $rootScope = injectHelper.injector.get('$rootScope');
+
 			if (!$rootScope.$$phase) {
 				$rootScope.$digest(() => {
 					fn.apply(this, args);

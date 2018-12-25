@@ -1,6 +1,5 @@
 import angular from 'angular';
 import injectHelper from '../helper/injectHelper';
-const $timeout = injectHelper.injector.get('$timeout');
 
 export const $Timeout = (delay = 0, invokeApply = true) => (target, key, descriptor) => {
 	const fn = descriptor.value;
@@ -12,6 +11,7 @@ export const $Timeout = (delay = 0, invokeApply = true) => (target, key, descrip
 	return {
 		...descriptor,
 		value(...args) {
+			const $timeout = injectHelper.injector.get('$timeout');
 			return $timeout(() => {
 				fn.apply(this, args);
 			}, delay, invokeApply);
