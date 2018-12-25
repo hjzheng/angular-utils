@@ -6,7 +6,13 @@
 [![coverage](https://img.shields.io/codecov/c/github/hjzheng/angular-utils.svg?style=flat-square)](https://codecov.io/gh/hjzheng/angular-utils)
 
 
-> ### 注意：请使用 0.1.x 版本， 0.2.x 正在测试中
+> ### 注意: 0.2.x 版本的使用方式与之前 0.1.x 的使用方式有所不同
+
+```js
+// 需要在 AngularJS 启动时候引入 ngUtils 模块
+import ngUtils from 'angular-utils';
+angular.module('app', [ngUtils]); 
+```
 
 ### 使用 装饰器 
 
