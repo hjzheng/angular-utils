@@ -5,7 +5,6 @@
 [![npm downloads](https://img.shields.io/npm/dt/angular-utils.svg?style=flat-square)](https://www.npmjs.com/package/angular-utils)
 [![coverage](https://img.shields.io/codecov/c/github/hjzheng/angular-utils.svg?style=flat-square)](https://codecov.io/gh/hjzheng/angular-utils)
 
-
 > ### 注意: 0.2.x 版本的使用方式与之前 0.1.x 的使用方式有所不同
 
 ```js
