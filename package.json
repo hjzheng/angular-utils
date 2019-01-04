@@ -1,6 +1,6 @@
 {
   "name": "angular-utils",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "just angular1.x es6 utils",
   "main": "./index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "karma start",
     "prepush": "npm test",
     "build": "rm -rf build && NODE_ENV=production babel src --out-dir build --ignore *_spec.js && cp package.json build/package.json && cp README.md build/README.md",
-    "pub": "npm run build && npm publish build && cnpm sync angular-utils",
+    "release": "npm test && npm run patch && npm run build && npm publish build && cnpm sync angular-utils",
     "patch": "bump --patch --commit --push"
   },
   "repository": {
