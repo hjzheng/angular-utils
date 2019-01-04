@@ -248,6 +248,9 @@ spread(Object.getPrototypeOf($q.defer().promise).constructor);
 
 包装 angular 模块方法, 不对外提供 filter/service, 原因见[No Service/Filter](https://github.com/ShuyunFF2E/ccms-angular-styleguide#no-servicefilter-)
 
+另外 decoratedModule 提供了 `namespace` 方法, 用于启用 namespace, 这时候无论是声明 controller, directive 还是 component 时候, 都会自动添加 moduleName 前缀
+避免重名问题.
+
 ```js
 import { decoratedModule } from 'angular-utils/utils';
 ```
