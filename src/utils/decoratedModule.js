@@ -5,11 +5,21 @@ class DecoratedModule {
 	constructor(name: string, modules: ?Array) {
 		this.routers = map.get('uiRoutersConf') || {};
 		this.name = name;
+		this._namespace = '';
+
 		if (modules) {
 			this.ngModule = angular.module(name, modules);
 		} else {
 			this.ngModule = angular.module(name);
 		}
+	}
+
+	namespace(_namespace: ?string) {
+		this._namespace = _namespace || this.name;
+	}
+
+	assembleNamespace(name) {
+		return `${this._namespace}.${name}`;
 	}
 
 	router(className: ?string) {
@@ -43,9 +53,26 @@ class DecoratedModule {
 	}
 
 	controller(...params) {
+		const ctrlName = params.shift();
+		params.unshift(this.assembleNamespace(ctrlName));
 		this.ngModule.controller(...params);
 		return this;
 	}
+
+	directive(...params) {
+		const directiveName = params.shift();
+		params.unshift(this.assembleNamespace(directiveName));
+		this.ngModule.directive(...params);
+		return this;
+	}
+
+	component(...params) {
+		const directiveName = params.shift();
+		params.unshift(this.assembleNamespace(directiveName));
+		this.ngModule.component(...params);
+		return this;
+	}
+
 }
 
 function Module(...params) {

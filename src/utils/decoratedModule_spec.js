@@ -12,6 +12,7 @@ describe('decoratedModule', () => {
 		configFunc = jasmine.createSpy('configFunc');
 		runFunc = jasmine.createSpy('runFunc');
 		module = decoratedModule('AnotherApp', []);
+		module.namespace(); // 启用 namespace, 默认值是 moduleName
 		module.config(configFunc);
 		module.run(runFunc);
 		module.controller('AnotherAppCtrl', function ($scope) {
@@ -35,7 +36,7 @@ describe('decoratedModule', () => {
 
 	it('test controller', () => {
 		let $scope: Object = {};
-		$controller('AnotherAppCtrl', { $scope: $scope });
+		$controller(`${module.name}.AnotherAppCtrl`, { $scope: $scope });
 		expect($scope.name).toBe('test');
 	});
 

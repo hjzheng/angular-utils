@@ -14,12 +14,12 @@ import angular from 'angular';
 let prefix = 'ccms';
 /**
  *  路由装饰器
- * @param config config的配置选项包括{ stateName, children/module, url, templateUrl, template, controller, controllerAs, ... } 
+ * @param config config的配置选项包括 stateName, children/module, url, templateUrl, template, controller, controllerAs, ...
  * @returns {Function}
  * @constructor
  */
 function Route(config) {
-	return function(target) {
+	return function (target) {
 		config.controller = target; // 强制改变路由配置中的controller为当前修饰的控制器
 		withRouter(config); // 设置路由
 	};
