@@ -112,7 +112,7 @@ class AppCtrl {
 import { $Apply } from 'angular-utils/decorators';
 
 class AppCtrl {
-	@$Apply()
+	@$Apply
 	test() {
 	
 	}
@@ -125,7 +125,7 @@ class AppCtrl {
 import { $Async } from 'angular-utils/decorators';
 
 class AppCtrl {
-	@$Async()
+	@$Async
 	async test() {
 		const result = await fetchSomeInfos();
 		this.info = result.info;
