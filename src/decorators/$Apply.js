@@ -1,7 +1,7 @@
 import angular from 'angular';
-import injectHelper from '../helper/injectHelper';
+import injectHelper from '../utils/injectHelper';
 
-export const $Apply = (target, key, descriptor) => {
+const $Apply = (target, key, descriptor) => {
 	const fn = descriptor.value;
 
 	if (!angular.isFunction(fn)) {
@@ -26,3 +26,5 @@ export const $Apply = (target, key, descriptor) => {
 		}
 	};
 };
+
+export default $Apply;

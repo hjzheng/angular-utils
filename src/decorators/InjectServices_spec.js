@@ -3,7 +3,7 @@ describe('@InjectServices', () => {
 	let InjectServices;
 	beforeEach(done => {
 		setTimeout(() => {
-			InjectServices = require('./InjectServices').InjectServices;
+			InjectServices = require('./InjectServices').default;
 			done();
 		});
 	});

@@ -1,7 +1,7 @@
 import angular from 'angular';
-import injectHelper from '../helper/injectHelper';
+import injectHelper from '../utils/injectHelper';
 
-export const $Timeout = (delay = 0, invokeApply = true) => (target, key, descriptor) => {
+const $Timeout = (delay = 0, invokeApply = true) => (target, key, descriptor) => {
 	const fn = descriptor.value;
 
 	if (!angular.isFunction(fn)) {
@@ -18,3 +18,5 @@ export const $Timeout = (delay = 0, invokeApply = true) => (target, key, descrip
 		}
 	};
 };
+
+export default $Timeout;

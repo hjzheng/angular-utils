@@ -1,7 +1,7 @@
 describe('@$Apply', () => {
 	beforeEach(done => {
 		setTimeout(() => {
-			require('./$Apply').$Apply;
+			require('./$Apply').default;
 			done();
 		});
 	});

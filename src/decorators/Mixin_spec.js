@@ -1,4 +1,4 @@
-import { Mixin } from './Mixin';
+import Mixin from './Mixin';
 
 describe('@Mixin', () => {
 

@@ -1,10 +1,10 @@
-import { $Inject } from './$Inject';
-import { $Apply } from './$Apply';
-import { $Async } from './$Async';
-import { $Timeout } from './$Timeout';
-import { Mixin } from './Mixin';
-import { Router } from './Router';
-import { InjectServices } from './InjectServices';
+import $Inject from './$Inject';
+import $Apply from './$Apply';
+import $Async from './$Async';
+import $Timeout from './$Timeout';
+import Mixin from './Mixin';
+import Router from './Router';
+import InjectServices from './InjectServices';
 
 import Route, { routerHub } from './Route';
 import Component from './Component';
@@ -17,7 +17,6 @@ export {
 	Mixin,
 	Router,
 	InjectServices,
-
 	Route,
 	routerHub,
 	Component

@@ -1,7 +1,7 @@
 import map from '../utils/map';
 import traverse from '../utils/traverse';
 
-export const Router = (state: string, config: Object) => target => {
+const Router = (state: string, config: Object) => target => {
 	// use target replace controller name
 	traverse(config, 'controller', target);
 
@@ -14,3 +14,5 @@ export const Router = (state: string, config: Object) => target => {
 	};
 	map.set('uiRoutersConf', routers);
 };
+
+export default Router;

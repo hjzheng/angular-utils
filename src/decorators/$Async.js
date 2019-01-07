@@ -1,7 +1,7 @@
 import angular from 'angular';
-import injectHelper from '../helper/injectHelper';
+import injectHelper from '../utils/injectHelper';
 
-export const $Async = (target, key, descriptor) => {
+const $Async = (target, key, descriptor) => {
 
 	const fn = descriptor.value;
 
@@ -20,3 +20,5 @@ export const $Async = (target, key, descriptor) => {
 		}
 	};
 };
+
+export default $Async;

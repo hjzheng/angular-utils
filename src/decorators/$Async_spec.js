@@ -1,4 +1,4 @@
-import {$Async} from './$Async';
+import $Async from './$Async';
 import 'babel-polyfill';
 
 function delay(t, v) {

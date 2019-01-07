@@ -214,6 +214,24 @@ export default class PartialPage {
 
 ## 使用 utils
 
+- injectHelper.injector 
+
+备注: 使用该方法前:
+
+```js
+import ngUtils from 'angular-utils/module';
+angular.module('app', [ngUtils]); 
+```
+
+获取 $inject 对象, 方便获取依赖
+
+```js
+import injectHelper from 'angular-utils/utils/injectHelper';
+
+injectHelper.injector.get('$http');
+
+```
+
 - InterceptorFactory
 
 由于 $resource 的 interceptor 配置, 不支持数组方式, 配置多拦截器.

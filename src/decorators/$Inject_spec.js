@@ -1,5 +1,5 @@
 import angular from 'angular';
-import { $Inject } from './$Inject';
+import $Inject from './$Inject';
 
 describe('@Inject', () => {
 

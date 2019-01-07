@@ -1,4 +1,4 @@
-import { Router } from './Router';
+import Router from './Router';
 import map from '../utils/map';
 
 describe('@Router', () => {
